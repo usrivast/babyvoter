@@ -1,0 +1,34 @@
+{
+  "name": "babyvoterserver",
+  "version": "1.0.0",
+  "description": "Node server for Baby Voter Applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Utkarsh Srivastava <utkarsh.srivastava@capitalone.com> (nourl)",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.15.0",
+    "method-override": "^2.3.6",
+    "mongoose": "^4.6.0",
+    "morgan": "^1.0.1",
+    "node-restful": "^0.2.5",
+    "passport": "0.2.0",
+    "passport-facebook": "1.0.3",
+    "passport-http-bearer": "1.0.1",
+    "passport-local": "^1.0.0",
+    "request": "^2.75.0",
+    "resourcejs": "^1.4.1",
+    "static-favicon": "^2.0.0-alpha"
+  }
+}

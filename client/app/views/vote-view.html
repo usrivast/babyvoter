@@ -1,0 +1,9 @@
+<h3>{{ vote.user }}</h3>
+<p> Gender: {{ vote.gender[0]}}</p>
+<p> Day: {{ vote.day}}</p>
+<p> Month: {{ vote.month}}</p>
+<p> Suggestion for Name:
+  <ul ng-repeat="name in vote.babyName">
+  <li>{{name}}</li>
+</ul> </p>
+<p> Voting Date: {{ vote.created | date : 'medium'}}</p>

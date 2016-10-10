@@ -1,0 +1,226 @@
+<!doctype html>
+<html ng-app="clientApp">
+<head>
+  <meta charset="utf-8">
+  <title>Megha/Utkarsh to Mom/Dad (MU to MD)</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+</head>
+<body class="auth-demo-application" data-ng-controller="HomeCtrl">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">
+          <img style="margin-top: -15px;" src="images/teddybear.png"/>
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-controller="NavCtrl">
+
+        <ul class="nav nav-pills pull-left">
+          <li ng-class="{ active: isActive('#/')}"><a href="#/">Home</a></li>
+          <li ng-class="{ active: isActive('#/votes')}"><a ng-href="#/votes">Votes</a></li>
+          <li ng-class="{ active: isActive('#/about')}"><a ng-href="#/about">About</a></li>
+          <li ng-class="{ active: isActive('#/contact')}"><a ng-href="#/contact">Contact</a></li>
+          <li ng-class="{ active: isActive('#/users')}"><a ng-href="#/users">Users</a></li>
+        </ul>
+
+        <ul class="nav nav-pills pull-right" ng-hide="isAuthenticated">
+          <li ng-class="{ active: isActive('#/signup')}">
+            <a ng-href="#/create/user">Sign Up</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li ng-class="{ active: isActive('#/signin')}">
+            <a ng-href="#/signin">Sign In</a>
+          </li>
+        </ul>
+
+        <ul class="nav nav-pills pull-right" ng-show="isAuthenticated">
+          <li ng-class="{ active: isActive('#/signup')}">
+            <a ng-click="logout()"> Sign Out </a>
+          </li>
+        </ul>
+
+        <!--<ul class="nav nav-pills pull-right" ng-hide="Main.isAuthenticated()">-->
+        <!--<li class="dropdown" dropdown>-->
+        <!--<a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">-->
+        <!--<img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"-->
+        <!--class="header-profile-image"/>-->
+        <!--<span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>-->
+        <!--</a>-->
+        <!--<ul class="dropdown-menu" role="menu">-->
+        <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="settings.profile">Edit Profile</a>-->
+        <!--</li>-->
+        <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="settings.picture">Change Profile Picture</a>-->
+        <!--</li>-->
+        <!--<li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">-->
+        <!--<a ui-sref="settings.password">Change Password</a>-->
+        <!--</li>-->
+        <!--<li ui-sref-active="active">-->
+        <!--<a ui-sref="settings.accounts">Manage Social Accounts</a>-->
+        <!--</li>-->
+        <!--<li class="divider"></li>-->
+        <!--<li>-->
+        <!--<a href="/api/auth/signout" target="_self">Signout</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</li>-->
+        <!--</ul>-->
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div id="login-holder">
+    <form ng-submit="signin()" ng-controller="NavCtrl">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <strong>Signin</strong>
+            </div>
+            <div class="panel-body">
+              <h3 class="col-md-12 text-center">Sign in using your social accounts</h3>
+              <div class="col-md-12 text-center">
+                <a href="http://localhost:3000/auth/facebook">
+                  <img src="/images/login/facebook.png" />
+                </a>
+              </div>
+
+
+              <form class="form-horizontal" role="form" ng-submit="signin()">
+                <h3 class="col-md-12 text-center">Or create a User account by clicking on
+                  <a ng-href="#/create/user">Sign Up</a>
+                </h3>
+                <div class="form-group">
+                  <label for="email" class="col-sm-2 control-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-sm-2 control-label">Password</label>
+                  <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" placeholder="Password"
+                           ng-model="password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="content" style="margin-bottom: 10px;">
+
+    <div ng-view=""></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p><span class="glyphicon glyphicon-heart"></span> Megha and Utkarsh </p>
+  </div>
+</div>
+
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  !function (A, n, g, u, l, a, r) {
+    A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
+        (A[l].q = A[l].q || []).push(arguments)
+      }, A[l].l = +new Date, a = n.createElement(g),
+      r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+  }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<!-- endbower -->
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<!--<script src="bower_components/angular-animate/angular-animate.js"></script>-->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+<script src="bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.1.4.js"></script>
+<script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+<script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap-tpls.min.js"></script>-->
+<!--<script src="bower_components/angular-ui-select/dist/select.js"></script>-->
+<script src="bower_components/angular-ui-select3/src/select3.js"></script>
+<!--<script src="bower_components/angular-ui-select/dist/select.css"></script>-->
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+<link rel="stylesheet" href="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css"/>
+<link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/factories/voteFactory.js"></script>
+<script src="scripts/factories/mainFactory.js"></script>
+<script src="scripts/factories/userFactory.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/votes.js"></script>
+<script src="scripts/controllers/contact.js"></script>
+<script src="scripts/controllers/vote-add.js"></script>
+<script src="scripts/controllers/vote-view.js"></script>
+<script src="scripts/controllers/vote-delete.js"></script>
+<script src="scripts/controllers/vote-edit.js"></script>
+<script src="scripts/controllers/home.js"></script>
+<script src="scripts/controllers/users.js"></script>
+<script src="scripts/controllers/user-view.js"></script>
+<script src="scripts/controllers/user-signup.js"></script>
+<!-- endbuild -->
+</body>
+</html>

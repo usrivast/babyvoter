@@ -1,0 +1,29 @@
+<table class="table table-striped" ng-show="isAuthenticated">
+  <thead>
+  <th>User</th>
+  <th>Gender</th>
+  <th>Month</th>
+  <th>Day</th>
+  <th>Created</th>
+  <th>Operations</th>
+  </thead>
+  <tbody>
+  <tr ng-repeat="vote in votes">
+    <td>{{ vote.user }}</td>
+    <td>{{ vote.gender[0] }}</td>
+    <td>{{ vote.month }}</td>
+    <td>{{ vote.day }}</td>
+    <td>{{ vote.created | date:'medium'}}</td>
+    <td>
+      <div class="button-group">
+        <a ng-href="/#/vote/{{ vote._id }}" class="btn btn-default">
+          <span class="glyphicon glyphicon-edit"></span>
+        </a>
+        <a ng-href="/#/vote/{{ vote._id }}/delete" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove-circle"></span>
+        </a>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>

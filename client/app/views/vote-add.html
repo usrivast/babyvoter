@@ -1,0 +1,90 @@
+<form role="form" ng-show="isAuthenticated">
+  <h3> Vote from {{vote.user}}</h3>
+  <!--<div class="form-group">-->
+  <!--<label for="user" class="control-label">User</label>-->
+  <!--<input type="text" ng-model="vote.user" class="form-control" id="user" placeholder="Enter your Name">-->
+  <!--</div>-->
+  <div class="form-group">
+    <!--<label for="gender" class="control-label">Gender</label>-->
+    <!--<select ng-model="vote.gender" id="gender">-->
+
+    <!--<option ng-repeat="item in genders" value="{{item}}">{{item}}-->
+    <!--</option>-->
+    <!--</select>-->
+    <div class="gender-cont">
+      <div class="gender-img" ng-class="{'gender-img-selected':vote.gender==='girl'}" ng-click="setGender('girl')">
+        <h3 style="text-align: center;">Girl</h3>
+        <img src="/images/baby-girl.png" alt="Girl"/>
+      </div>
+      <h2 class="gender-h2">Or</h2>
+      <div class="gender-img" ng-class="{'gender-img-selected':vote.gender==='boy'}" ng-click="setGender('boy')">
+        <h3 style="text-align: center;">Boy</h3>
+        <img src="/images/baby-boy.png" alt="Boy"/>
+      </div>
+    </div>
+  </div>
+
+
+  <!--<input type="text" ng-model="vote.gender" class="form-control" id="gender" placeholder="Enter the gender">-->
+  <div class="form-group">
+    <div style="text-align: center;">
+      <h4>Month</h4>
+      <p>Select month by using the arrows</p>
+    </div>
+    <!--<select ng-model="vote.month" id="month">-->
+
+    <!--<option ng-repeat="choice in items" value="{{choice}}">{{choice}}-->
+    <!--</option>-->
+    <!--</select>-->
+
+    <div>
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides | orderBy :'id'" active="active" index="$index"
+             ng-click="setMonth($index)">
+          <img ng-src="{{slide.image}}" style="margin:auto;height: 250px">
+          <div class="carousel-caption">
+            <!--<h4>Slide {{slide.id}}</h4>-->
+            <h4>{{slide.text}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="btn-group" uib-dropdown dropdown-append-to-body>-->
+    <!--<button id="btn-append-to-body" type="button" class="btn btn-primary" uib-dropdown-toggle>-->
+    <!--Select Month <span class="caret"></span>-->
+    <!--</button>-->
+    <!--<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">-->
+    <!--<li ng-repeat="choice in items">-->
+    <!--<a href>{{choice}}</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+  </div>
+  <div class="form-group">
+    <div style="text-align: center;">
+      <h4>Day</h4>
+      <p>Select month by sliding</p>
+    </div>
+    <rzslider rz-slider-model="slider_toggle.value" rz-slider-options="slider_toggle.options"></rzslider>
+    <!--<select ng-model="vote.day" id="day">-->
+
+    <!--<option ng-repeat="day in days" value="{{day}}">{{day}}-->
+    <!--</option>-->
+    <!--</select>-->
+  </div>
+  <div class="form-group">
+    <div style="text-align: center;">
+      <h4>
+        <label for="babyName" class="control-label">Baby Name Suggestion</label>
+      </h4>
+      <p>Type the baby name and hit enter</p>
+      <p>Please suggest a boy and a girl name</p>
+    </div>
+    <tags-input ng-model="names" class="bootstrap" placeholder="Add a baby name"></tags-input>
+  </div>
+  <div style="text-align: center;">
+    <input type="submit" class="btn btn-primary" ng-click="saveVote()" value="Save">
+    <input type="submit" class="btn btn-primary" ng-click="cancel()" value="Cancel">
+  </div>
+</form>

@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+client/bower_components
+client/app/bower_components
+client/node_modules
+server/node_modules
+fb-server
